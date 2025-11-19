@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ToolBuddy.PCG.TreeSpawner
+namespace ToolBuddy.PCG.TreeSpawners
 {
     [ExecuteAlways]
     public class BlueNoiseTreeSpawner : MonoBehaviour
@@ -47,9 +47,6 @@ namespace ToolBuddy.PCG.TreeSpawner
         {
             _isDirty = true;
         }
-
-        #endregion
-
         private void Update()
         {
             if (_isDirty)
@@ -58,6 +55,8 @@ namespace ToolBuddy.PCG.TreeSpawner
                 _isDirty = false;
             }
         }
+
+        #endregion
 
         private void Generate()
         {

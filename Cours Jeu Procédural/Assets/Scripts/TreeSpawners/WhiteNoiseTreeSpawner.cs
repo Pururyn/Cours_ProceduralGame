@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace ToolBuddy.PCG.TreeSpawner
+namespace ToolBuddy.PCG.TreeSpawners
 {
     [ExecuteAlways]
     public class WhiteNoiseTreeSpawner : MonoBehaviour
@@ -10,7 +9,7 @@ namespace ToolBuddy.PCG.TreeSpawner
         private GameObject _treePrefab;
 
         [SerializeField]
-        private int _numberOfTrees = 10;
+        private int _numberOfTrees = 300;
 
         [SerializeField]
         private float _width = 100;
@@ -45,8 +44,6 @@ namespace ToolBuddy.PCG.TreeSpawner
             _isDirty = true;
         }
 
-        #endregion
-
         private void Update()
         {
             if (_isDirty)
@@ -55,6 +52,8 @@ namespace ToolBuddy.PCG.TreeSpawner
                 _isDirty = false;
             }
         }
+
+        #endregion
 
         private void Generate()
         {
@@ -69,10 +68,25 @@ namespace ToolBuddy.PCG.TreeSpawner
         {
             for (int i = 0; i < _numberOfTrees; i++)
             {
-                float x = Random.Range(-_width * 0.5f, _width * 0.5f);
-                float z = Random.Range(-_length * 0.5f, _length * 0.5f);
-                Vector3 position = new Vector3(x, 0, z);
-                Instantiate(_treePrefab, position, Quaternion.identity, transform);
+                float x = Random.Range(
+                    -_width * 0.5f,
+                    _width * 0.5f
+                );
+                float z = Random.Range(
+                    -_length * 0.5f,
+                    _length * 0.5f
+                );
+                Vector3 position = new Vector3(
+                    x,
+                    0,
+                    z
+                );
+                Instantiate(
+                    _treePrefab,
+                    position,
+                    Quaternion.identity,
+                    transform
+                );
             }
         }
 
